@@ -1,8 +1,8 @@
-<form action={{ url }} method="POST">
+<form class="form" action={{ url }} method="{{ method }}">
     {% csrf_token %}
     <label>Имя</label>
     <input name="username">
     <label>Пароль</label>
     <input name="password">
-    <button type="submit">Подтвердить</button>
+    <button type="submit">{{ submit }}</button>
 </form>

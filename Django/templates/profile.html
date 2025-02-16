@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    {% include "base/head.html" with title="Profile"%}
+    <link rel="stylesheet" href="{% static 'styles/profile.css' %}">
+</head>
+<body>
+    {% include "base/header.html"%}
+    <div class="profile-container">
+        <h1>Профиль пользователя</h1>
+        <div class="profile-info">
+            <label>Имя пользователя:</label>
+            <p>{{ user.username }}</p>
+
+            <label>Email:</label>
+            <p>{{ user.email }}</p>
+
+            <label>Дата регистрации:</label>
+            <p>{{ user.date_joined }}</p>
+
+            <label>Последнее посещение:</label>
+            <p>{{ user.last_login }}</p>
+
+            <label>Действия:</label>
+            <p><a href="/edit_profile/">Редактировать профиль</a></p>
+            <p><a href="/change_password/">Изменить пароль</a></p>
+        </div>
+    </div>
+</body>
+</html>

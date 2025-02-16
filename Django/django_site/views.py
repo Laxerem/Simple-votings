@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 from django_site.managers import UserManager
-from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth import get_user_model, authenticate, login
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 
 User_model = get_user_model()
 
@@ -29,7 +30,7 @@ def register(request: HttpRequest) -> HttpResponse:
     return render(request, template_name="auth.html", context=context)
 
 # Create your views here.
-def login(request: HttpRequest) -> HttpResponse:
+def user_login(request: HttpRequest) -> HttpResponse:
     context = {
         "title": "Login",
         "zag": "Вход",
@@ -42,13 +43,17 @@ def login(request: HttpRequest) -> HttpResponse:
         name = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=name, password=password)
-        if user:
+        if user is not None:
+            login(request, user)
             context["message"] = "Вы успешно вошли в аккаунт"
+            return redirect('/home')
         else:
             context["message"] = "Неверный логин или пароль"
 
     return render(request, template_name="auth.html", context=context)
 
-def home(request: HttpRequest) -> HttpResponse:
+def profile(request: HttpRequest) -> HttpResponse:
+    return render(request, template_name="profile.html",)
 
+def home(request: HttpRequest) -> HttpResponse:
     return render(request, template_name="home.html")

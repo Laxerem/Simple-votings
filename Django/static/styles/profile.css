@@ -1,0 +1,36 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+.profile-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+.profile-info {
+    margin-top: 20px;
+}
+.profile-info label {
+    font-weight: bold;
+    display: block;
+}
+.profile-info p {
+    margin: 5px 0 20px 0;
+}
+.profile-info a {
+    text-decoration: none;
+    color: #007bff;
+}
+.profile-info a:hover {
+    text-decoration: underline;
+}

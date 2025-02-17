@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    {% include "base/head.html" with title="Create Poll"%}
+    <link rel="stylesheet" href="{% static 'styles/message.css' %}">
+</head>
+
+<body>
+    {% include "base/header.html" %}
+    <main>
+        {% block content %}
+        <h2>Create a New Poll</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Create Poll</button>
+        </form>
+        {% endblock %}
+    </main>
+</body>

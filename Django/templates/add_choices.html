@@ -7,12 +7,12 @@
 </head>
 <body>
     {% block content %}
-    <h2>Add Choices for Poll: {{ poll.question }}</h2>
+    <h2>Добавить вариант {{ poll.question }}</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Add Choice</button>
+        <button type="submit">Добавить</button>
     </form>
-    <a href="{% url 'create_votings' %}">Create New Poll</a>
+    <a href="{% url 'create_votings' %}">Создать опрос</a>
     {% endblock %}
 </body>

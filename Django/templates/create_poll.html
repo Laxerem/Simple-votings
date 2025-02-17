@@ -10,11 +10,11 @@
     {% include "base/header.html" %}
     <main>
         {% block content %}
-        <h2>Create a New Poll</h2>
+        <h2>Создать опрос</h2>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Create Poll</button>
+            <button type="submit">Создать</button>
         </form>
         {% endblock %}
     </main>

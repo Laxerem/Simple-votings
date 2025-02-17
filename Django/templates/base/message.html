@@ -1,0 +1,10 @@
+<div class="message">
+    <h2>{{message}}</h2>
+    <div class="varios">
+        <a class="ok" href="/profile">Отмена</a>
+        <form action="{% url 'profile_delete' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="warning">Удалить аккаунт</button>
+        </form>
+    </div>
+</div>

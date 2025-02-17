@@ -23,6 +23,13 @@ a {
     src: url(../fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf);
 }
 
+.ok:hover {
+    color: burlywood;
+}
+.warning:hover {
+    color: red;
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -78,4 +85,31 @@ header {
 
 body {
     background-color: #D3CBC4;
+}
+
+.message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    font-family: 'Montserrat', monospace;
+    text-align: center;
+    gap: 20px;
+
+    .varios {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        a {
+            cursor: pointer;
+            color: black;
+            font-size: 20px;
+        }
+
+        .ok:hover {
+            color: greenyellow;
+        }
+    }
 }

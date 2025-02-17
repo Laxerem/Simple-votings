@@ -2,9 +2,29 @@ html, body {
     height: 100%;
 }
 
-body {
-    font-family: Arial, sans-serif;
+.avatar_container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .avatar {
+        background-image: url(../images/default_profile.png);
+        background-size: cover;
+        background-position: center;
+        height: 200px;
+        width: 200px;
+        border: 2px solid black;
+    }
+
+    .username {
+        p {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            font-size: 30px;
+        }
+    }
 }
+
 .profile-container {
     max-width: 600px;
     margin: 20px auto;
@@ -13,24 +33,42 @@ body {
     border: 1px solid #ddd;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+
+.profile {
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+}
+
 h1 {
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
     color: #333;
+    font-weight: 400;
+    border-bottom: 2px solid #281822;
 }
 .profile-info {
-    margin-top: 20px;
+    width: 60%;
 }
 .profile-info label {
     font-weight: bold;
     display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
 }
 .profile-info p {
     margin: 5px 0 20px 0;
+    font-family: 'Montserrat', sans-serif;
 }
-.profile-info a {
-    text-decoration: none;
-    color: #007bff;
-}
-.profile-info a:hover {
-    text-decoration: underline;
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 10px;
+    a {
+        transition: 0.2s;
+        color: black;
+        font-family: 'Montserrat', sans-serif;
+    }
 }

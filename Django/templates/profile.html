@@ -8,23 +8,30 @@
 <body>
     {% include "base/header.html"%}
     <div class="profile-container">
-        <h1>Профиль пользователя</h1>
-        <div class="profile-info">
-            <label>Имя пользователя:</label>
-            <p>{{ user.username }}</p>
+        <div class="profile_zag">
+            <h1>Профиль пользователя</h1>
+        </div>
+        <div class="profile">
+            <div class="avatar_container">
+                <div class="avatar"></div>
+                <div class="username">
+                    <p>{{ user.username }}</p>
+                </div>
+            </div>
+            <div class="profile-info">
+                <label>Дата регистрации:</label>
+                <p>{{ user.date_joined }}</p>
 
-            <label>Email:</label>
-            <p>{{ user.email }}</p>
+                <label>Последнее посещение:</label>
+                <p>{{ user.last_login }}</p>
 
-            <label>Дата регистрации:</label>
-            <p>{{ user.date_joined }}</p>
-
-            <label>Последнее посещение:</label>
-            <p>{{ user.last_login }}</p>
-
-            <label>Действия:</label>
-            <p><a href="/edit_profile/">Редактировать профиль</a></p>
-            <p><a href="/change_password/">Изменить пароль</a></p>
+                <label>Действия:</label>
+                <div class="actions">
+                    <a class="ok" href="/user/edit_profile">Редактировать профиль</a>
+                    <a class="warning" href="/logout">Выйти из аккаунта</a>
+                    <a class="warning" href="/delete/user">Удалить аккаунт</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>

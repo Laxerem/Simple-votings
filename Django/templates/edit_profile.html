@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    {% include "base/head.html" with title="Edit Profile"%}
+    <link rel="stylesheet" href="{% static 'styles/profile.css' %}">
+</head>
+<body>
+    {% include "base/header.html"%}
+    <div class="profile-container">
+        <div class="profile_zag">
+            <h1>Изменить профиль</h1>
+        </div>
+        <div class="profile">
+            <div class="avatar_container">
+                <div class="avatar"></div>
+                <div class="username">
+                    <p>{{ user.username }}</p>
+                </div>
+            </div>
+            <div class="profile-info">
+                <label>Дата регистрации:</label>
+                <p>{{ user.date_joined }}</p>
+
+                <label>Последнее посещение:</label>
+                <p>{{ user.last_login }}</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    <label>Новое имя</label>
+                    <input name="new_username">
+                    <label>Новый пароль</label>
+                    <input name="new_password">
+                    
+                    <div class="actions">
+                        <button type="submit">Сохранить изменения</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

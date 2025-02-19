@@ -3,6 +3,7 @@ from django.urls import path
 from django_site.views import register, home, user_login, main, profile, user_logout, delete_user
 
 urlpatterns = [
+    path("admin", admin.site.urls, name="admin"),
     path("", main, name="main"),
     path('register', register, name="register"),
     path('login', user_login, name="login"),

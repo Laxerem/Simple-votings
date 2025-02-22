@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    {% include "base/head.html" with title=title%}
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'styles/homepage.css' %}" />
+    <title>VoteCraft</title>
+  </head>
+  <body>
+    {% include "base/header.html" %}
+    <header>
+      <div class="fixed_header">
+        <img class="image" src="{% static 'images/logo-Photoroom.png' %}" />
+        <button type="button" class="btn btn-outline-secondary btn-sm">Войти</button>
+        <button type="button" class="btn btn-primary btn-sm">
+          Бесплатная регистрация
+        </button>
+      </div>
+    </header>
+
+    <main>
+
+      <div class="main d-flex align-items-center">
+        <div class="blockinfo">
+          <div class="h1"><b>Опросы для сбора информации</b></div>
+          <p class="slogan">
+            Легко создавайте опросы и анализируйте их результаты.
+          </p>
+          <button type="button" class="btn btn-primary btn-sm">
+            Зарегистрироваться
+          </button>
+        </div>
+        <img class="image2" src="{% static 'images/Group2.png' %}" />
+      </div>
+
+      <div class="divAbilities">
+        <h2><b>Возможности у нас есть, но мы не придумали про какие именно мы хотим рассказать. </b></h2>
+      
+
+
+      <div class="container mt-5">
+        <button id="toggleButton" class="btn btn-primary">
+          Показать что мы можем
+        </button>
+        <div class="options-list mt-3">
+          <ul class="list-group">
+            <li class="list-group-item">Мы можем вот это</li>
+            <li class="list-group-item">А еще вот это</li>
+            <li class="list-group-item">А еще мы вот так умеем</li>
+            <li class="list-group-item">А также вот так вот</li>
+          </ul>
+        </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script>
+          $(document).ready(function() {
+              $('#toggleButton').click(function() {
+                  $('.options-list').slideToggle(); // Разворачиваем/сворачиваем список
+                  $(this).text($(this).text() === 'Скрыть возможности' ? 'Показать возможности' : 'Скрыть возможности'); // Меняем текст кнопки
+              });
+          });
+      </script>
+      </div>
+
+
+      <div class="emails">
+        <p class = "subscription"><h1 ><b>Подписка на рассылку VoteCraft!</b></h1>
+         Получайте новости об обновлениях на вашу почту!</p>
+      
+      <form class="input">
+        <input type="text" id = "email" placeholder="Введите ваш email">
+      </form>
+      <button type="button" class="btn btn-outline-light subscribe-button">Подписаться!</button>
+
+    </div>
+    </main>
+
+    <footer>
+        <div class="footer d-flex align-items-center justify-content-between">
+            <div class="footer-content">
+                <img class="image-footer" src="{% static 'images/logo-Photoroom.png' %}" alt="Logo" />
+                <p>Built by MSHP students.<br><br>
+                    2025 VoteCraft. All rights reserved.
+                </p>
+            </div>
+            <div class="devs">
+                <ul>
+                   <h4> В разработке участвовали:</h4>
+                    <li>Григорий Воробьев</li>
+                    <li>Роман Харченко</li>
+                    <li>Якушков Павел</li>
+                    <li>Янина Екатерина</li>
+                    <li>Полина Пронина</li>
+                    <li>Максим Гунькин</li>
+                    <li>Никита Свинин</li>
+                    <li>Арсений Кудинов</li>
+                    <li>Николай Грачев</li>
+                    <li>Павел Кутузов</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    
+  </body>
+</html>

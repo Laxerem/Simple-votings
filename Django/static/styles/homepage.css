@@ -1,0 +1,133 @@
+html,
+body {
+  height: 100%;
+  margin: 0%;
+  background-color: #f5f6f7;
+  padding: 0%;
+}
+
+.fixed_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f5f6f7;
+  width: 100%;
+  height: 11%;
+  font-size: large;
+  position: fixed;
+  padding: 1%;
+  padding-left: 5%;
+  padding-right: 4%;
+}
+
+.main {
+  padding-top: 10%;
+  background-image: linear-gradient(45deg, #48192e93, #f5f6f7);
+  height: auto;
+  padding-left: 6%;
+  padding-right: 15%;
+}
+
+.image {
+  height: 100%;
+}
+.footer {
+  background-color: red;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  padding: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  padding-left: 5%;
+  background-color: #f8f9fa;
+  color: #999999b9;
+}
+.btn-primary {
+  background-color: #281822;
+  border-color: #281822;
+  outline-color: #281822;
+  font-weight: 300;
+  width: auto;
+  padding: 5px 10px;
+}
+.btn-outline-secondary {
+  margin-left: 70%;
+  border-color: transparent;
+}
+.slogan {
+  color: #f5f6f7;
+  margin-top: 1%;
+  margin-bottom: 3%;
+}
+.blockinfo {
+  width: 50%;
+  margin-bottom: 7%;
+}
+.image2 {
+  height: 200px;
+  width: 200px;
+  margin-left: 70%;
+  padding-bottom: 1%;
+  position: static;
+}
+.divAbilities {
+  padding: 5%;
+}
+.custom-button-1 {
+  margin-left: 80%;
+  position: static;
+}
+.btn-primary:hover {
+  background-color: #48192e;
+  border-color: #48192e;
+}
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgb(158, 158, 158);
+}
+
+.btn:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem #48192ea8;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgb(172, 172, 172);
+  background-color: #48192e;
+}
+.options-list {
+  display: none;
+}
+.emails {
+  background-image: radial-gradient(#204952, #000);
+  height: 80%;
+  color: #fefefe;
+  position: static;
+  padding-left: 5%;
+  text-align: center;
+  padding: 10%;
+}
+.input {
+  color: #204952;
+}
+.subscribe-button {
+  margin-top: 1%;
+}
+.image-footer {
+  height: 25%;
+  width: 30%;
+  padding-bottom: 3%;
+  margin-right: 15px;
+}
+.devs ul {
+  list-style-type: none;
+  padding-left: 0;
+  text-align: center;
+  padding-right: 50%;
+}
+
+.devs li {
+  margin-bottom: 5px;
+}

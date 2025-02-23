@@ -17,8 +17,11 @@
             <div class="polls_container">
                 <form method="post">
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Создать</button>
+                    <label>Имя опроса</label>
+                    <div class="form_action">
+                        <input name="question">
+                        <button type="submit">Создать</button>
+                    </div>
                 </form>
             </div>
         </div>

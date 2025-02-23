@@ -88,7 +88,7 @@ def create_survey(request):
         form = CreateSurveyForm()
     return render(request, 'votings/create_survey.html', {'form': form})
 
-def create_poll(request, survey_id):
+def survey_editor(request, survey_id):
     survey = get_object_or_404(Survey, pk=survey_id)
     context = {
             "survey_name": survey.name
@@ -99,10 +99,13 @@ def create_poll(request, survey_id):
             poll: Votings = form.save(commit=False)
             poll.survey_id = survey
             poll.save()
-            return redirect('home')  # Или другой маршрут
     else:
         form = CreatePollForm()
+    
+    context['polls'] = survey.survey_id.all()
     context['form'] = form
+    print(context)
+
     return render(request, 'votings/create_poll.html', context)
 
 def add_choices(request, poll_id):

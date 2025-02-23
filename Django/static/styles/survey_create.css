@@ -15,7 +15,7 @@ main {
         align-items: center;
         text-align: center;
         height: 50px;
-        background-color: #48192E;
+        background-color: #204952;
         color: white;
         border-radius: 15px 15px 0px 0px;
     }
@@ -31,6 +31,15 @@ main {
     background-color: #48192e5e;
 }
 
+.form_action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 400px;
+}
+
 form {
     display: flex;
     align-items: center;
@@ -44,7 +53,7 @@ form {
     }
     input {
         border-radius: 20px;
-        background-color: #48192E;
+        background-color: #D3CBC4;
         height: 15px;
         width: 60%;
         max-width: 300px;
@@ -68,5 +77,6 @@ form {
 }
 
 .polls_container {
-    padding: 20px;
+    padding: 20px 50px 20px 50px;
+    background-color: #281822;
 }

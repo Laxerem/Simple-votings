@@ -72,3 +72,13 @@ def delete_user(request: HttpRequest) -> HttpResponse:
 
 def home(request: HttpRequest) -> HttpResponse:
     return render(request, template_name="home.html")
+
+@login_required
+def edit_profile(request: HttpRequest) -> HttpResponse:
+    if request.method == 'POST':
+        request.user.username = request.POST['new_username']
+        request.user.set_password(request.POST['new_password'])
+        request.user.save()
+        return redirect("home")
+
+    return render(request, template_name="edit_profile.html",)

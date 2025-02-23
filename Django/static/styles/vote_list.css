@@ -1,0 +1,47 @@
+/* vote_list.css */
+
+/* Основные стили для тела страницы */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #D3CBC4; /* Светлый фон */
+    color: #281822; /* Темный текст */
+    margin: 0;
+    padding: 0;
+}
+
+/* Контейнер для опросов */
+.container {
+    max-width: 800px;
+    margin: 20px auto; /* Центрируем контейнер */
+    padding: 20px;
+    background-color: #204952; /* Темный фон контейнера */
+    border-radius: 8px; /* Закругленные углы */
+}
+
+/* Заголовок страницы */
+h1 {
+    color: #D3CBC4; /* Цвет заголовка */
+    text-align: center; /* Центрируем заголовок */
+}
+
+/* Карточка опроса */
+.voting-card {
+    background-color: #48192E; /* Цвет фона карточки */
+    color: #D3CBC4; /* Цвет текста на карточке */
+    padding: 15px;
+    margin: 10px 0; /* Отступы между карточками */
+    border-radius: 5px; /* Закругленные углы карточек */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Тень для карточек */
+    transition: transform 0.2s; /* Плавный эффект при наведении */
+}
+
+/* Эффект при наведении на карточку */
+.voting-card:hover {
+    transform: scale(1.02); /* Увеличение карточки при наведении */
+}
+
+/* Заголовок карточки опроса */
+.voting-card h2 {
+    margin: 0; /* Убираем отступы у заголовка карточки */
+    font-size: 1.5em; /* Размер шрифта заголовка */
+}

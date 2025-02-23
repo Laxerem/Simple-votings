@@ -71,4 +71,4 @@ def delete_user(request: HttpRequest) -> HttpResponse:
     return render(request, template_name="profile_delete.html", context=context)
 
 def home(request: HttpRequest) -> HttpResponse:
-    return render(request, template_name="home.html")
+    return render(request, template_name="homepage.html")

@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% load static %}
-    {% include "base/head.html" with title=title%}
+    {% include "base/head.html" with title="Home"%}
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
@@ -15,26 +13,27 @@
     <title>VoteCraft</title>
   </head>
   <body>
-    {% include "base/header.html" %}
     <header>
       <div class="fixed_header">
         <img class="image" src="{% static 'images/logo-Photoroom.png' %}" />
-        <button type="button" class="btn btn-outline-secondary btn-sm">Войти</button>
-        <button type="button" class="btn btn-primary btn-sm">
-          Бесплатная регистрация
-        </button>
+        <div class="buttons">
+          <button type="button" class="btn btn-outline-secondary btn-sm" href="/login" onclick="document.location='/login'">Войти</button>
+          <button type="button" class="btn btn-primary btn-sm" onclick="document.location='/register'">
+            Бесплатная регистрация
+          </button>
+        </div>
       </div>
     </header>
 
     <main>
 
-      <div class="main d-flex align-items-center">
+      <div class="main d-flex justify-content-between p-5">
         <div class="blockinfo">
           <div class="h1"><b>Опросы для сбора информации</b></div>
           <p class="slogan">
             Легко создавайте опросы и анализируйте их результаты.
           </p>
-          <button type="button" class="btn btn-primary btn-sm">
+          <button type="button" class="btn btn-primary btn-sm" onclick="document.location='/register'">
             Зарегистрироваться
           </button>
         </div>
@@ -84,29 +83,12 @@
     </main>
 
     <footer>
-        <div class="footer d-flex align-items-center justify-content-between">
-            <div class="footer-content">
-                <img class="image-footer" src="{% static 'images/logo-Photoroom.png' %}" alt="Logo" />
-                <p>Built by MSHP students.<br><br>
-                    2025 VoteCraft. All rights reserved.
-                </p>
-            </div>
-            <div class="devs">
-                <ul>
-                   <h4> В разработке участвовали:</h4>
-                    <li>Григорий Воробьев</li>
-                    <li>Роман Харченко</li>
-                    <li>Якушков Павел</li>
-                    <li>Янина Екатерина</li>
-                    <li>Полина Пронина</li>
-                    <li>Максим Гунькин</li>
-                    <li>Никита Свинин</li>
-                    <li>Арсений Кудинов</li>
-                    <li>Николай Грачев</li>
-                    <li>Павел Кутузов</li>
-                </ul>
-            </div>
-        </div>
+          <div class="footer-content">
+              <img class="image-footer" src="{% static 'images/logo-Photoroom.png' %}" alt="Logo" />
+              <p>Built by MSHP students.<br>
+                  2025 VoteCraft. All rights reserved.
+              </p>
+          </div>
     </footer>
     
   </body>

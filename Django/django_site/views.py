@@ -12,6 +12,17 @@ User_model = get_user_model()
 def main(request: HttpRequest) -> HttpResponse:
     return redirect('home')
 
+@login_required
+def vote_list(request: HttpRequest) -> HttpResponse:
+    if request.user.is_authenticated:
+        survey = Survey.objects.filter(created_by=request.user)
+        context = {
+            "Survey" : survey 
+        }
+    else:
+        survey = None
+    return render(request, template_name="votings/vote_list.html", context=context)
+
 def register(request: HttpRequest) -> HttpResponse:
     context = {
         "title": "Register",

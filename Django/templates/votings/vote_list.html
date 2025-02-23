@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    {% include "base/head.html" with title="voting_list"%}
+    <link rel="stylesheet" href="{% static 'styles/vote_list.css' %}">
+</head>
+<body>
+    {% include "base/header.html"%}
+   <div class="container">
+       <h1>Опросы</h1>
+       {% for voting in Survey %}
+           <div class="voting-card">
+               <h2>{{ voting.name }}</h2>
+           </div>
+       {% endfor %}
+   </div>
+</body>
+</html>

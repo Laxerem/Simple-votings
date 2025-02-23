@@ -1,0 +1,71 @@
+html, body {
+    height: 100%;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+}
+
+.survey {
+    width: 70%;
+    max-width: 500px;
+    height: 50%;
+    .form_name {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 20%;
+        background-color: #48192E;
+        color: white;
+    }
+    h2 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+    }
+}
+
+.form_container {
+    height: auto;
+    padding: 20px;
+    background-color: #48192e5e;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap:20px;
+    height: auto;
+    label {
+        color: white;
+        font-size: 20px;
+        font-family: "JetBrains Mono", monospace;
+    }
+    input {
+        border-radius: 20px;
+        background-color: #48192E;
+        height: 15px;
+        width: 60%;
+        max-width: 300px;
+        color: white;
+        padding: 10px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 17px;
+    }
+    button {
+        transition: 0.3s;
+        font-family: "Montserrat", sans-serif;
+        border-radius: 10px;
+        padding: 6px;
+        width: 200px;
+        cursor: pointer;
+        font-size: 17px;
+    }
+    button:hover {
+        background-color: greenyellow;
+    }
+}

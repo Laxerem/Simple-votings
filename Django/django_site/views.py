@@ -4,8 +4,8 @@ from django_site.managers import UserManager
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-from src.forms import VoteForm, ChoiceForm, CreatePollForm
-from django_site.models import Votings
+from src.forms import VoteForm, ChoiceForm, CreatePollForm, CreateSurveyForm
+from django_site.models import Votings, Survey
 
 User_model = get_user_model()
 
@@ -76,18 +76,34 @@ def delete_user(request: HttpRequest) -> HttpResponse:
 def home(request: HttpRequest) -> HttpResponse:
     return render(request, template_name="home.html")
 
-def create_poll(request):
-    form = CreatePollForm()
+def create_survey(request):
+    if request.method == 'POST':
+        form = CreateSurveyForm(request.POST)
+        if form.is_valid():
+            survey: Survey = form.save(commit=False)
+            survey.created_by = request.user
+            survey.save()  # Сохраняем объект, чтобы получить survey.id
+            return redirect('create_poll', survey_id=survey.id)  # Перенаправляем с survey_id
+    else:
+        form = CreateSurveyForm()
+    return render(request, 'votings/create_survey.html', {'form': form})
+
+def create_poll(request, survey_id):
+    survey = get_object_or_404(Survey, pk=survey_id)
+    context = {
+            "survey_name": survey.name
+        }
     if request.method == 'POST':
         form = CreatePollForm(request.POST)
         if form.is_valid():
-            voting: Votings = form.save(commit=False)
-            voting.created_by = request.user
-            voting.save()
-            return redirect('add_choices', poll_id=voting.id)
-        else:
-            form = CreatePollForm()
-    return render(request, 'create_poll.html', {'form': form})
+            poll: Votings = form.save(commit=False)
+            poll.survey_id = survey
+            poll.save()
+            return redirect('home')  # Или другой маршрут
+    else:
+        form = CreatePollForm()
+    context['form'] = form
+    return render(request, 'votings/create_poll.html', context)
 
 def add_choices(request, poll_id):
     poll = get_object_or_404(Votings, pk=poll_id)
@@ -100,7 +116,7 @@ def add_choices(request, poll_id):
             return redirect('add_choices', poll_id=poll.id)
     else:
         form = ChoiceForm()
-    return render(request, 'add_choices.html', {'form': form, 'poll': poll})
+    return render(request, 'votings/add_choices.html', {'form': form, 'poll': poll})
 
 def vote(request, poll_id):
     poll = get_object_or_404(VoteForm, pk=poll_id)
@@ -112,7 +128,7 @@ def vote(request, poll_id):
             return redirect('results', poll_id=poll.id)
     else:
         form = VoteForm(poll)
-    return render(request, 'vote.html', {'form': form, 'poll': poll})
+    return render(request, 'votings/vote.html', {'form': form, 'poll': poll})
 
 def results(request, poll_id):
     poll = get_object_or_404(VoteForm, pk=poll_id)

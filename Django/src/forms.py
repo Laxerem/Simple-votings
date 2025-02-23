@@ -1,12 +1,17 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django_site.models import Choice, Votings
+from django_site.models import Choice, Votings, Survey
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ["username", "password"]  # Поля формы
+
+class CreateSurveyForm(forms.ModelForm):
+    class Meta:
+        model = Survey
+        fields = ['name']
 
 class CreatePollForm(forms.ModelForm):
     class Meta:

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    {% include "base/head.html" with title="Create Poll"%}
+    <link rel="stylesheet" href="{% static 'styles/survey.css' %}">
+</head>
+
+<body>
+    {% include "base/header.html" %}
+    <main>
+        {% block content %}
+        <div class="survey">
+            <div class="form_name">
+                <h2>Создать новый опрос</h2>
+            </div>
+                <div class="form_container">
+                    <form method="post">
+                        {% csrf_token %}
+                        <label>Введите имя опроса</label>
+                        <input name="name">
+                        <button type="submit">Создать</button>
+                    </form>
+                </div>
+        </div>
+        {% endblock %}
+    </main>
+</body>

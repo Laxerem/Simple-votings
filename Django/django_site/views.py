@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from src.forms import VoteForm, ChoiceForm, CreatePollForm, CreateSurveyForm
-from django_site.models import Votings, Survey, Choice
+from django_site.models import Votings, Survey, Choice, Vote
 
 User_model = get_user_model()
 
@@ -86,7 +86,7 @@ def edit_profile(request: HttpRequest) -> HttpResponse:
 
     return render(request, template_name="edit_profile.html",)
 
-
+@login_required
 def create_survey(request):
     if request.method == 'POST':
         form = CreateSurveyForm(request.POST)
@@ -99,6 +99,7 @@ def create_survey(request):
         form = CreateSurveyForm()
     return render(request, 'votings/create_survey.html', {'form': form})
 
+@login_required
 def survey_editor(request, survey_id):
     survey = get_object_or_404(Survey, pk=survey_id)
 
@@ -130,6 +131,7 @@ def survey_editor(request, survey_id):
 
     return render(request, 'votings/create_poll.html', context=context)
 
+@login_required
 def add_choices(request, poll_id):
     poll: Votings = get_object_or_404(Votings, pk=poll_id)
     if request.method == 'POST':
@@ -144,28 +146,36 @@ def add_choices(request, poll_id):
     
     return render(request, 'votings/add_choices.html', {'form': form, 'poll': poll, 'survey_id' : poll.survey_id.id})
 
-def vote(request, poll_id):
-    poll = get_object_or_404(VoteForm, pk=poll_id)
-    if request.method == 'POST':
-        form = VoteForm(poll, request.POST)
-        if form.is_valid():
-            choice = form.cleaned_data['choice']
-            VoteForm.objects.create(choice=choice, voter=request.user)
-            return redirect('results', poll_id=poll.id)
-    else:
-        form = VoteForm(poll)
-    return render(request, 'votings/vote.html', {'form': form, 'poll': poll})
+def vote(request, survey_id):
+    survey = get_object_or_404(Survey, pk=survey_id)
 
-def results(request, poll_id):
-    poll = get_object_or_404(VoteForm, pk=poll_id)
-    labels = []
-    data = []
-    for choice in poll.choices.all():
-        labels.append(choice.choice_text)
-        data.append(choice.votes.count())
     context = {
-        'poll': poll,
-        'labels': labels,
-        'data': data,
+        "survey_name": survey.name,
+        "message": "Пройди опрос"
     }
-    return render(request, 'results.html', context)
+
+    if request.method == 'POST':
+        for voting in survey.survey_id.all():
+            choice_id = request.POST.get(f'choice_{voting.id}')
+            if choice_id:
+                choice = Choice.objects.get(id=choice_id)
+                # Проверяем, не голосовал ли пользователь уже за этот выбор
+                if not Vote.objects.filter(choice=choice, voter=request.user).exists():
+                    choice.votes += 1
+                    choice.save()
+                    Vote.objects.create(choice=choice, voter=request.user)
+        return redirect('results', survey_id=survey_id)  # Перенаправляем на результаты
+
+    context['polls'] = survey.survey_id.all()
+    return render(request, 'votings/vote.html', context=context)
+
+from django.shortcuts import get_object_or_404, render
+
+def results(request, survey_id):
+    # Пытаемся получить объект Survey по заданному id
+    survey = get_object_or_404(Survey, pk=survey_id)
+    context = {
+
+    }
+    context['polls'] = survey.survey_id.all()
+    return render(request, 'votings/survey_results.html', context)

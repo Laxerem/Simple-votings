@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    {% include "base/head.html" with title="Survey Results" %}
+    <link rel="stylesheet" href="{% static 'styles/message.css' %}">
+</head>
+<body>
+    {% include "base/header.html" %}
+    
+    <h1>Результаты опроса: {{ survey.name }}</h1>
+    
+    {% for poll in polls %}
+        <ul>
+            {% for choice in poll.choices.all %}
+                <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    
+</body>
+</html>

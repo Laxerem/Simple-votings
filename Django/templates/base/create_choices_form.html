@@ -1,0 +1,7 @@
+<h2>{{ poll.question }}</h2>
+<form method="post">
+    {% csrf_token %}
+    <label>Вариант</label>
+    <input type="choice_text">
+    <button type="submit">Добавить</button>
+</form>

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from django_site.views import register, home, user_login, main, profile, user_logout, delete_user, edit_profile
+from django_site.views import register, edit_profile, home, user_login, main, profile, user_logout, delete_user, create_survey, add_choices, survey_editor
 
 urlpatterns = [
     path("admin", admin.site.urls, name="admin"),
@@ -12,4 +12,7 @@ urlpatterns = [
     path('logout/', user_logout, name="logout"),
     path('delete/user/', delete_user, name="profile_delete"),
     path('user/edit_profile', edit_profile, name="edit_profile"),
+    path('create_voting/', create_survey, name="create_votings"),
+    path('create_voting/<int:survey_id>/', survey_editor, name="create_poll"),
+    path('create_voting/poll/<int:poll_id>/add_choices', add_choices, name="add_choices")
 ]

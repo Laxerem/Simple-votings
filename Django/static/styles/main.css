@@ -63,8 +63,12 @@ header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 25px;
+        gap: 35px;
         font-family: 'Montserrat', sans-serif;
+
+        #create_voting:hover {
+            color: yellow;
+        }
 
         #login:hover {
             transition: 0.5s;

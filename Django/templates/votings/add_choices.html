@@ -3,16 +3,40 @@
 <head>
     {% load static %}
     {% include "base/head.html" with title="Delete Account"%}
-    <link rel="stylesheet" href="{% static 'styles/message.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/survey_create.css' %}">
 </head>
 <body>
-    {% block content %}
-    <h2>Добавить вариант {{ poll.question }}</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Добавить</button>
-    </form>
-    <a href="{% url 'create_poll' survey_id %}">Создать опрос</a>
-    {% endblock %}
+    {% include "base/header.html" %}
+    <main>
+        <div class="survey">
+            <div class="survey_name">
+                <h2>{{ poll.question }}</h2>
+            </div>
+            <div class="polls_container">
+                <h2 class="message">Добавьте варианты ответов</h2>
+                <div class="polls_list_container">
+                    <div class="poll">
+                        <div class="choices">
+                            {% for choice in poll.choices.all %}
+                                <div class="choice">
+                                    <h2>{{ choice.choice_text }}</h2>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <label>Вариант</label>
+                    <div class="typing">
+                        <input name="choice_text">
+                        <button type="submit">Добавить</button>
+                    </div>
+                </form>
+                <div class="create_poll_button">
+                    <button class="create_poll" onclick="window.location.href='{% url 'create_poll' survey_id %}'">Создать</button>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>

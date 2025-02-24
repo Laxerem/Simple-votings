@@ -58,7 +58,7 @@ form {
         height: 15px;
         width: 60%;
         max-width: 300px;
-        color: white;
+        color: black;
         padding: 10px;
         font-family: "Montserrat", sans-serif;
         font-size: 17px;
@@ -148,4 +148,45 @@ form {
     gap:20px;
     width: 90%;
     border: 2px solid rgba(245, 245, 245, 0.622);
+}
+
+.create_poll {
+    color: black;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 20px;
+}
+
+.typing {
+    display: flex;
+    gap: 20px;
+
+    input {
+        max-width: 200px;
+    }
+
+    button {
+        width: 110px;
+    }
+}
+
+.create_poll_button {
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    width: 100%;
+
+    button {
+        transition: 0.3s;
+        font-family: "Montserrat", sans-serif;
+        border-radius: 10px;
+        padding: 6px;
+        width: 200px;
+        cursor: pointer;
+        font-size: 17px;
+        align-self: flex-end;
+        background-color: white;
+    }
+    button:hover {
+        background-color: greenyellow;
+    }
 }

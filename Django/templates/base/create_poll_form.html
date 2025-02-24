@@ -1,0 +1,8 @@
+<form method="post">
+    {% csrf_token %}
+    <label>Имя опроса</label>
+    <div class="form_action">
+        <input name="question">
+        <button type="submit">Создать</button>
+    </div>
+</form>

@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from src.forms import VoteForm, ChoiceForm, CreatePollForm, CreateSurveyForm
-from django_site.models import Votings, Survey
+from django_site.models import Votings, Survey, Choice
 
 User_model = get_user_model()
 
@@ -90,26 +90,37 @@ def create_survey(request):
 
 def survey_editor(request, survey_id):
     survey = get_object_or_404(Survey, pk=survey_id)
+
     context = {
-            "survey_name": survey.name
+            "survey_name": survey.name,
+            "message": "Создайте опрос"
         }
+
     if request.method == 'POST':
         form = CreatePollForm(request.POST)
         if form.is_valid():
             poll: Votings = form.save(commit=False)
             poll.survey_id = survey
             poll.save()
+            context['message'] = "Хорошо, теперь добавьте варианты ответов"
+            return redirect("add_choices", poll_id=poll.id)
     else:
         form = CreatePollForm()
     
     context['polls'] = survey.survey_id.all()
     context['form'] = form
-    print(context)
 
-    return render(request, 'votings/create_poll.html', context)
+    votings = context['polls']
+    for vote in votings:
+        choices = vote.choices.all()  # Добавляем как атрибут объекта
+        print(choices)
+
+    print(votings)
+
+    return render(request, 'votings/create_poll.html', context=context)
 
 def add_choices(request, poll_id):
-    poll = get_object_or_404(Votings, pk=poll_id)
+    poll: Votings = get_object_or_404(Votings, pk=poll_id)
     if request.method == 'POST':
         form = ChoiceForm(request.POST)
         if form.is_valid():
@@ -119,7 +130,8 @@ def add_choices(request, poll_id):
             return redirect('add_choices', poll_id=poll.id)
     else:
         form = ChoiceForm()
-    return render(request, 'votings/add_choices.html', {'form': form, 'poll': poll})
+    
+    return render(request, 'votings/add_choices.html', {'form': form, 'poll': poll, 'survey_id' : poll.survey_id.id})
 
 def vote(request, poll_id):
     poll = get_object_or_404(VoteForm, pk=poll_id)

@@ -12,4 +12,5 @@ urlpatterns = [
     path('delete/user/', delete_user, name="profile_delete"),
     path('create_voting/', create_survey, name="create_votings"),
     path('create_voting/<int:survey_id>/', survey_editor, name="create_poll"),
+    path('create_voting/poll/<int:poll_id>/add_choices', add_choices, name="add_choices")
 ]

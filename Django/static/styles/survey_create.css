@@ -8,6 +8,7 @@ main {
     margin-top: 50px;
     width: 90%;
     max-width: 800px;
+    border-radius: 15px;
     height: 50%;
     .survey_name {
         display: flex;
@@ -17,7 +18,6 @@ main {
         height: 50px;
         background-color: #204952;
         color: white;
-        border-radius: 15px 15px 0px 0px;
     }
     h2 {
         font-family: "Montserrat", sans-serif;
@@ -46,6 +46,7 @@ form {
     flex-direction: column;
     gap:20px;
     height: auto;
+    margin-top: 20px;
     label {
         color: white;
         font-size: 20px;
@@ -70,13 +71,81 @@ form {
         width: 200px;
         cursor: pointer;
         font-size: 17px;
+        align-self: center;
     }
     button:hover {
         background-color: greenyellow;
     }
 }
 
+.poll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: whitesmoke;
+    width: 100%;
+    border-bottom: 2px solid rgba(245, 245, 245, 0.622);
+}
+
 .polls_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     padding: 20px 50px 20px 50px;
     background-color: #281822;
+}
+
+.message {
+    margin: 0;
+    color: greenyellow;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid white;
+    width: 60%;
+}
+
+.choices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 80%;
+    gap: 15px;
+    padding: 15px 0px;
+}
+
+.choice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 50px;
+    max-width: 200px;
+    background-color: black;
+    margin: 5px;
+    padding: 7px;
+    border-radius: 20px;
+    min-width: 70px;
+}
+
+.poll_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    background-color: #d4ff0057;
+    padding: 10px 0px 10px 0px;
+}
+
+.polls_list_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:20px;
+    width: 90%;
+    border: 2px solid rgba(245, 245, 245, 0.622);
 }

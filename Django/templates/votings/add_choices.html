@@ -13,6 +13,6 @@
         {{ form.as_p }}
         <button type="submit">Добавить</button>
     </form>
-    <a href="{% url 'create_votings' %}">Создать опрос</a>
+    <a href="{% url 'create_poll' survey_id %}">Создать опрос</a>
     {% endblock %}
 </body>

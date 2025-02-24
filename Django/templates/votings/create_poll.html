@@ -2,29 +2,39 @@
 <html>
 <head>
     {% load static %}
-    {% include "base/head.html" with title="Create Poll"%}
+    {% include "base/head.html" with title="Create Poll" %}
     <link rel="stylesheet" href="{% static 'styles/survey_create.css' %}">
 </head>
-
 <body>
     {% include "base/header.html" %}
     <main>
         {% block content %}
         <div class="survey">
             <div class="survey_name">
-                <h2>{{survey_name}}</h2>
+                <h2>{{ survey_name }}</h2>
             </div>
             <div class="polls_container">
-                <form method="post">
-                    {% csrf_token %}
-                    <label>Имя опроса</label>
-                    <div class="form_action">
-                        <input name="question">
-                        <button type="submit">Создать</button>
-                    </div>
-                </form>
+                <h2 class="message">{{ message }}</h2>
+                <div class="polls_list_container">
+                    {% for poll in polls %}
+                        <div class="poll">
+                            <div class="poll_header">
+                                <h2>{{ poll.question }}</h2>
+                            </div>
+                            <div class="choices">
+                                {% for choice in poll.choices.all %}
+                                    <div class="choice">
+                                        <h2>{{ choice.choice_text }}</h2>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% include "base/create_poll_form.html" %}
             </div>
         </div>
         {% endblock %}
     </main>
 </body>
+</html>

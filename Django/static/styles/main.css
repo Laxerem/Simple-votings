@@ -30,22 +30,37 @@ a {
     color: red;
 }
 
+.zagolovok-f {
+    background-image: url(../images/logo-Photoroom.png);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 180px;
+    transition: 0.5s;
+}
+
 header {
+    position: fixed;
+    width: 100%;
     display: flex;
     justify-content: space-between;
+    padding: 5px;
     align-items: center;
     height: 50px;
-    color: aliceblue;
-    background-color: #281822;
+    color: #48192E;
+    background-color: #D3CBC4;
     transition: 0.5s;
 
     .zagolovok {
+        background-image: url(../images/logo-Photoroom.png);
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        height: 47px;
+        width: 210px;
+        margin-left: 30px;
         transition: 0.5s;
-        a {
-            font-size: 30px;
-            font-family: 'JetBrains Mono', monospace; 
-            font-weight: 300;  
-        }
     }
 
     .zagolovok:hover {
@@ -58,21 +73,32 @@ header {
     .user_auth {
         font-size: 20px;
         transition: 0.5s;
-        margin-right: 30px;
+        margin-right: 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 25px;
         font-family: 'Montserrat', sans-serif;
 
+
         #login:hover {
             transition: 0.5s;
             color: red;
         }
 
+        #login, #register {
+            color: #48192E;
+        }
+
         #register:hover {
             transition: 0.5s;
-            color: blue;
+            color: #2c6b79;
+        }
+
+        #profile {
+            color: #48192E;
+            font-size: 22px;
+            font-weight: 500;
         }
 
         #profile:hover {
@@ -83,7 +109,7 @@ header {
 }
 
 body {
-    background-color: #D3CBC4;
+    background-color: white;
 }
 
 .message {
@@ -109,6 +135,41 @@ body {
 
         .ok:hover {
             color: greenyellow;
+        }
+    }
+}
+
+footer {
+    padding: 10px 50px 10px 20px;
+    height: auto;
+    background-color: #D3CBC4;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.footer_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    font-size: 15px;
+    gap:15px;
+}
+
+@media (max-width: 660px) {
+    header {
+        height: auto;
+        flex-direction: column;
+        gap:10px;
+        .zagolovok {
+            padding: 3px;
+            margin: 0;
+            border-bottom: 2px solid #48192E;
+        }
+        .user_auth {
+            margin-right: 0;
+            gap:30px;
         }
     }
 }

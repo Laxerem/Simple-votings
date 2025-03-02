@@ -7,32 +7,34 @@
 </head>
 <body>
     {% include "base/header.html"%}
-    <div class="profile-container">
-        <div class="profile_zag">
-            <h1>Профиль пользователя</h1>
-        </div>
-        <div class="profile">
-            <div class="avatar_container">
-                <div class="avatar"></div>
-                <div class="username">
-                    <p>{{ user.username }}</p>
+    <main>
+        <div class="profile-container">
+            <div class="profile_zag">
+                <h1>Профиль пользователя</h1>
+            </div>
+            <div class="profile">
+                <div class="avatar_container">
+                    <div class="avatar"></div>
+                    <div class="username">
+                        <p>{{ user.username }}</p>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <label>Дата регистрации:</label>
+                    <p>{{ user.date_joined }}</p>
+
+                    <label>Последнее посещение:</label>
+                    <p>{{ user.last_login }}</p>
+
+                    <label>Действия:</label>
+                    <div class="actions">
+                        <a class="ok" href="/user/edit_profile">Редактировать профиль</a>
+                        <a class="warning" href="/logout">Выйти из аккаунта</a>
+                        <a class="warning" href="/delete/user">Удалить аккаунт</a>
+                    </div>
                 </div>
             </div>
-            <div class="profile-info">
-                <label>Дата регистрации:</label>
-                <p>{{ user.date_joined }}</p>
-
-                <label>Последнее посещение:</label>
-                <p>{{ user.last_login }}</p>
-
-                <label>Действия:</label>
-                <div class="actions">
-                    <a class="ok" href="/user/edit_profile">Редактировать профиль</a>
-                    <a class="warning" href="/logout">Выйти из аккаунта</a>
-                    <a class="warning" href="/delete/user">Удалить аккаунт</a>
-                </div>
-            </div>
         </div>
-    </div>
+    </main>
 </body>
 </html>

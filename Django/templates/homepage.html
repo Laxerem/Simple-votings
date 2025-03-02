@@ -3,28 +3,11 @@
   <head>
     {% load static %}
     {% include "base/head.html" with title="Home"%}
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
     <link rel="stylesheet" href="{% static 'styles/homepage.css' %}" />
     <title>VoteCraft</title>
   </head>
   <body>
-    <header>
-      <div class="fixed_header">
-        <img class="image" src="{% static 'images/logo-Photoroom.png' %}" />
-        <div class="buttons">
-          <button type="button" class="btn btn-outline-secondary btn-sm" href="/login" onclick="document.location='/login'">Войти</button>
-          <button type="button" class="btn btn-primary btn-sm" onclick="document.location='/register'">
-            Бесплатная регистрация
-          </button>
-        </div>
-      </div>
-    </header>
-
+    {% include "base/header.html" %}
     <main>
 
       <div class="main d-flex justify-content-between p-5">

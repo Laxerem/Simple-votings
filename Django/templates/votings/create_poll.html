@@ -17,7 +17,7 @@
                 <h2 class="message">{{ message }}</h2>
                 <div class="polls_list_container">
                     {% for poll in polls %}
-                        <div class="poll">
+                        <div class="poll" onclick="window.location.href='{% url  'add_choices' poll.id%}'">
                             <div class="poll_header">
                                 <h2>{{ poll.question }}</h2>
                             </div>

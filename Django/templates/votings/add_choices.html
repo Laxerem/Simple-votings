@@ -3,7 +3,7 @@
 <head>
     {% load static %}
     {% include "base/head.html" with title="Delete Account"%}
-    <link rel="stylesheet" href="{% static 'styles/survey_create.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/add_choices.css' %}">
 </head>
 <body>
     {% include "base/header.html" %}
@@ -18,7 +18,7 @@
                     <div class="poll">
                         <div class="choices">
                             {% for choice in poll.choices.all %}
-                                <div class="choice">
+                                <div class="choice" onclick="window.location.href='{% url 'delete_choice' poll.id choice.id%}'">
                                     <h2>{{ choice.choice_text }}</h2>
                                 </div>
                             {% endfor %}

@@ -86,13 +86,6 @@ form {
     color: whitesmoke;
     width: 100%;
     transition: 0.2s;
-    border-bottom: 2px solid rgba(245, 245, 245, 0.622);
-}
-
-.poll:hover {
-    box-sizing: border-box;
-    border: 3px solid greenyellow;
-    cursor: pointer;
 }
 
 .polls_container {
@@ -137,6 +130,11 @@ form {
     min-width: 70px;
 }
 
+.choice:hover {
+    background-color: rgb(200, 16, 16);
+    cursor: pointer;
+}
+
 .poll_header {
     display: flex;
     justify-content: center;
@@ -155,6 +153,7 @@ form {
     flex-direction: column;
     gap:20px;
     width: 90%;
+    border-radius: 20px;
     border: 2px solid rgba(245, 245, 245, 0.622);
 }
 

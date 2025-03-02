@@ -7,6 +7,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap:20px;
 }
 
 .avatar_container {
@@ -80,6 +82,25 @@ h1 {
     }
 }
 
+.vote_list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    color: white;
+    height: 50px;
+    width: 200px;
+    background-color: black;
+    border-radius: 20px;
+    transition: 0.4s;
+}
+
+.vote_list:hover {
+    cursor: pointer;
+    background-color: greenyellow;
+    color: black;
+}
+
 @media (max-width: 660px) {
     header {
         height: 100px;
@@ -87,6 +108,9 @@ h1 {
     .profile {
         flex-direction: column;
         align-items: center;
+    }
+    .profile-container {
+        margin-top: 100px;
     }
     .profile-info {
         width: 100%;

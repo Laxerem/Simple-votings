@@ -12,6 +12,17 @@ User_model = get_user_model()
 def main(request: HttpRequest) -> HttpResponse:
     return redirect('home')
 
+@login_required
+def vote_list(request: HttpRequest) -> HttpResponse:
+    if request.user.is_authenticated:
+        survey = Survey.objects.filter(created_by=request.user)
+        context = {
+            "Survey" : survey 
+        }
+    else:
+        survey = None
+    return render(request, template_name="votings/vote_list.html", context=context)
+
 def register(request: HttpRequest) -> HttpResponse:
     context = {
         "title": "Register",
@@ -177,3 +188,16 @@ def results(request, survey_id):
     }
     context['polls'] = survey.survey_id.all()
     return render(request, 'votings/survey_results.html', context)
+
+@login_required
+def delete_choice(request, poll_id, choice_id):
+    poll = get_object_or_404(Votings, id=poll_id)
+    choice = get_object_or_404(Choice, id=choice_id, poll=poll)
+
+    # Проверка, что пользователь — создатель опроса (опционально)
+    if poll.survey_id.created_by != request.user:
+        return render(request, 'error.html', {'message': 'У вас нет прав для удаления этого варианта.'})
+
+    choice.delete()
+
+    return redirect('add_choices', poll_id=poll.id)

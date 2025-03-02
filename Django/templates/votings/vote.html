@@ -8,19 +8,21 @@
 <body>
     {% include "base/header.html" %}
     {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        {% for voting in polls %}
-        <h1>{{ voting.question }}</h1>
-        <div>
-            {% for choice in voting.choices.all %}
-            <input type="radio" name="choice_{{ voting.id }}" id="choice{{ forloop.counter }}_{{ voting.id }}" value="{{ choice.id }}">
-            <label for="choice{{ forloop.counter }}_{{ voting.id }}">{{ choice.choice_text }}</label><br>
+    <main>
+        <form method="post">
+            {% csrf_token %}
+            {% for voting in polls %}
+            <h1>{{ voting.question }}</h1>
+            <div>
+                {% for choice in voting.choices.all %}
+                <input type="radio" name="choice_{{ voting.id }}" id="choice{{ forloop.counter }}_{{ voting.id }}" value="{{ choice.id }}">
+                <label for="choice{{ forloop.counter }}_{{ voting.id }}">{{ choice.choice_text }}</label><br>
+                {% endfor %}
+            </div>
             {% endfor %}
-        </div>
-        {% endfor %}
-        <input type="submit" value="Vote">
-    </form>
-    {% endblock %}
+            <input type="submit" value="Vote">
+        </form>
+        {% endblock %}
+    </main>
 </body>
 </html>

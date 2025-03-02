@@ -169,8 +169,6 @@ def vote(request, survey_id):
     context['polls'] = survey.survey_id.all()
     return render(request, 'votings/vote.html', context=context)
 
-from django.shortcuts import get_object_or_404, render
-
 def results(request, survey_id):
     # Пытаемся получить объект Survey по заданному id
     survey = get_object_or_404(Survey, pk=survey_id)

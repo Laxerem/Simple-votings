@@ -1,0 +1,115 @@
+.preview {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    height: 400px;
+    background: rgb(72,25,46);
+    background: linear-gradient(36deg, rgba(72,25,46,1) 0%, rgba(224,224,224,1) 100%);
+}
+
+.preview-content {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.preview-text {
+    height: 300px;
+    width: 350px;
+    font-family: 'Montserrat', sans-serif;
+
+    p {
+        margin-top: 40px;
+        color: white;
+    }
+}
+
+.preview-image {
+    height: 350px;
+    width: 320px;
+    background-image: url(../images/Group2.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.about_site {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 40px;
+}
+
+.about_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+}
+
+.about-text {
+    width: 50%;
+    font-family: 'Montserrat', sans-serif;
+    p {
+        margin-top: 40px;
+    }
+}
+
+.about-image {
+    background-image: url(../images/voting.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 400px;
+    width: 50%;
+}
+
+@media (max-width: 660px) {
+    main {
+        padding-top: 98px;
+    }
+    .about_content {
+        flex-direction: column-reverse;
+    }
+    .about-text {
+        h1 {
+            padding: 3px;
+            text-align: center;
+            border-bottom: 3px solid black;
+        }
+        width: 100%;
+    }
+    .about-image {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 750px) {
+    .preview {
+        height: auto;
+        max-height: 500px;
+        .preview-content {
+            flex-direction: column-reverse;
+
+            .preview-text {
+                text-align: center;
+                height: auto;
+            }
+            .preview-image { 
+                height: 300px;
+                width: 270px;
+            }
+        }
+    }
+    .about-image {
+        height: 250px;
+    }
+}

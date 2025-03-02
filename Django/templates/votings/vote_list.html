@@ -10,7 +10,7 @@
    <div class="container">
        <h1>Опросы</h1>
        {% for voting in Survey %}
-           <div class="voting-card">
+           <div class="voting-card" onclick="window.location.href=''">
                <h2>{{ voting.name }}</h2>
            </div>
        {% endfor %}

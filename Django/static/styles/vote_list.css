@@ -26,6 +26,7 @@ h1 {
 
 /* Карточка опроса */
 .voting-card {
+    text-align: center;
     background-color: #48192E; /* Цвет фона карточки */
     color: #D3CBC4; /* Цвет текста на карточке */
     padding: 15px;

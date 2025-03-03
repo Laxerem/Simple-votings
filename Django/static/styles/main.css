@@ -5,6 +5,7 @@
 
 main {
     padding-top: 60px;
+    padding-bottom: 60px;
 }
 
 a {
@@ -184,5 +185,8 @@ footer {
             margin-right: 0;
             gap:30px;
         }
+    }
+    main {
+        padding-top: 100px;
     }
 }

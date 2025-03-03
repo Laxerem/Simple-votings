@@ -3,20 +3,39 @@
 <head>
     {% load static %}
     {% include "base/head.html" with title="Survey Results" %}
-    <link rel="stylesheet" href="{% static 'styles/message.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/vote.css' %}">
 </head>
 <body>
     {% include "base/header.html" %}
     <main>
-        <h1>Результаты опроса: {{ survey.name }}</h1>
-        
-        {% for poll in polls %}
-            <ul>
-                {% for choice in poll.choices.all %}
-                    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+        <div class="vote_form">
+            <div class="vote_form_header">
+                <h1>Результаты опроса: {{ survey.name }}</h1>
+            </div>
+            
+            <form>
+                {% for poll in polls %}
+                    <div class="voting_question">
+                        <h1>{{ poll.question }}</h1>
+                    </div>
+                    <div class="voting_choices">
+                        <ul>
+                            {% for choice in poll.choices.all %}
+                                <li>
+                                    {% if request.user.is_authenticated and choice.id in user_voted_choices %}
+                                        {{ choice.choice_text }}: <span style="color: red; border-bottom: 2px solid red;">{{ choice.votes }} 
+                                            vote{{ choice.votes|pluralize }}</span>
+                                    {% else %}
+                                        {{ choice.choice_text }}: <span>{{ choice.votes }} 
+                                            vote{{ choice.votes|pluralize }}</span>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 {% endfor %}
-            </ul>
-        {% endfor %}
+            </form>
+        </div>
     </main>
 </body>
 </html>

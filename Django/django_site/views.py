@@ -178,16 +178,24 @@ def vote(request, survey_id):
         return redirect('results', survey_id=survey_id)  # Перенаправляем на результаты
 
     context['polls'] = survey.survey_id.all()
+    context['survey'] = survey
     return render(request, 'votings/vote.html', context=context)
 
 def results(request, survey_id):
-    # Пытаемся получить объект Survey по заданному id
-    survey = get_object_or_404(Survey, pk=survey_id)
-    context = {
+    survey = get_object_or_404(Survey, id=survey_id)
+    polls = Votings.objects.filter(survey_id=survey)
 
-    }
-    context['polls'] = survey.survey_id.all()
-    return render(request, 'votings/survey_results.html', context)
+    # Получаем ID вариантов, за которые проголосовал текущий пользователь
+    user_voted_choices = Vote.objects.filter(
+        voter=request.user,
+        choice__poll__survey_id=survey
+    ).values_list('choice_id', flat=True) if request.user.is_authenticated else []
+
+    return render(request, 'votings/survey_results.html', {
+        'survey': survey,
+        'polls': polls,
+        'user_voted_choices': user_voted_choices,
+    })
 
 @login_required
 def delete_choice(request, poll_id, choice_id):
